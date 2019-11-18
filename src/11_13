@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class Main_11_13 {
+    public static void main(String[] args) {
+        // 每四行每四列是一个周期，
+        // **  **
+        // **  **
+        //         ** **
+        //         ** **
+        Scanner scanner = new Scanner(System.in);
+        while(scanner.hasNext()){
+            //行数
+            int m = scanner.nextInt();
+            //列数
+            int n = scanner.nextInt();
+            //i或i+1行的蛋糕数
+            int evenICount = (n/4) * 2 +( n % 4 < 2 ? n % 4 : 2);
+            //i+1 或i+2 行的蛋糕数
+            int oddICount = ((n-2)/4) *2 + ((n-2) %4 < 2 ? (n-2)%4 : 2);
+            //共有m/4个完整的四行，再处理有余数的情况
+            int ans = m / 4 * (evenICount + oddICount) * 2;
+            //多一行或两行都是加上第一行的蛋糕数
+            if(m % 4 > 0) ans += evenICount;
+            if(m % 4 > 1) ans += evenICount;
+            //否则加上第三行的蛋糕数
+            if(m % 4 > 2) ans += oddICount;
+            System.out.println(ans);
+        }
+
+
+        
+        //求两个数的最小公倍数 ，所以先求这两个数的最大公约数，使用辗转相除法
+        Scanner in = new Scanner(System.in);
+        int a = in.nextInt();
+        int b = in.nextInt();
+        System.out.println(lcm(a,b));
+
+    }
+
+    private static int lcm(int a, int b) {
+        return (a*b) / (gbc(a,b));
+    }
+
+    private static int gbc(int a, int b) {
+        if( b == 0 ){
+            return a;
+        }
+        return gbc(b,a%b);
+    }
+}
