@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Main_11_15 {
+    public static void main(String[] args) {
+        //n的阶乘后有多少0
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int res = 0;
+        for (int i = n; i >= 5; i--) {
+            int tmp = i;
+            while (tmp % 5 == 0) {
+                res++;
+                tmp /= 5;
+            }
+        }
+        System.out.println(res);
+//逆序数字
+        Scanner scs = new Scanner(System.in);
+        int num = scs.nextInt();
+        String rses = ""; while(num!=0)
+        {
+            int t1 = num % 10;
+            int t2 = num / 10;
+            rses = rses + String.valueOf(t1);
+            num = t2;
+        }System.out.println(res);
+    }
+}
+
+
