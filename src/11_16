@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Main_11_16 {
+    /**
+     * 机器人走方格
+     * @param x 行数
+     * @param y 列数
+     * @return 多少中方法能从左上走到右下
+     */
+    public int countWays(int x, int y) {
+        if (x == 1 || y == 1) return 1;
+        return countWays(x - 1, y) + countWays(x, y - 1);
+    }
+    //使用三个变量abc分别表示每次迭代中的A[n] ,A[n-1],A[n-2].
+    //计算数列的过程中，如果发现某一项大于等于n时，就可以停止了，此时n的值介于最后的两项之间
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = 0;
+        int a = 0 , b = 1 , c =1;
+        if(scanner.hasNext()){
+            n = scanner.nextInt();
+        }
+        while(c<n){
+            a = b;
+            b = c;
+            c = a+b;
+        }
+        int dis1 = n-b;
+        int dis2 = c- n;
+        System.out.println(dis1<dis2?dis1:dis2);
+    }
+}
