@@ -27,6 +27,6 @@ public class Main_11_26_2 {
         cur.next = Bhead.next;
         return Shead.next;//返回第1个节点next(不含头节点)
         }
-        }
+        
     }
 }
